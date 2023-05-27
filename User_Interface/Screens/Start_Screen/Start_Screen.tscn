@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://grmy056bkduk"]
+[gd_scene load_steps=2 format=3 uid="uid://d0wpylyyj7dar"]
 
-[ext_resource type="Script" path="res://Start_Button.gd" id="1_3yyc7"]
+[ext_resource type="Script" path="res://User_Interface/Screens/Start_Screen/Start_Button.gd" id="1_1afje"]
 
 [node name="Start_Screen" type="Node2D"]
 
@@ -10,6 +10,6 @@ offset_top = 255.0
 offset_right = 742.0
 offset_bottom = 350.0
 text = "Start Game"
-script = ExtResource("1_3yyc7")
+script = ExtResource("1_1afje")
 
 [connection signal="pressed" from="Start_Button" to="Start_Button" method="_on_start_pressed"]
