@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuf2g0fceeybm"]
+
+[ext_resource type="Script" path="res://boxes/Deteciton_Box/Detectionbox.gd" id="1_pycv3"]
+
+[node name="Detectionbox" type="Area2D"]
+script = ExtResource("1_pycv3")
