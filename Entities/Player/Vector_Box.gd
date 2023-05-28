@@ -10,6 +10,8 @@ var input_vector : Vector2;
 
 @export var reset_radius : Area2D;
 
+@export var player : Player
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,16 +22,22 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func _draw():
+	draw_line(position_end, position_start, Color.BLUE, 8.0);
 
 func _input(event):
-	
-	if (event is InputEventMouse and event.is_action_pressed("ui_touch")) :
-		
-		pass
+	if not touch_down :
+		return
 	if (event is InputEventMouseMotion):
 		position_end = event.position
 		input_vector = -(position_end - position_start).limit_length(max_length)
-
+	
+	if (event.is_action_released("ui_touch")):
+		touch_down = false;
+		
+		
+		
 func _on_input_event(viewport, event, shape_idx):
 	
 	if (event.is_action_pressed("ui_touch")) :
