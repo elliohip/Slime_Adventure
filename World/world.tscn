@@ -1,13 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://4g3uhosvyfh"]
+[gd_scene load_steps=4 format=3 uid="uid://4g3uhosvyfh"]
 
 [ext_resource type="PackedScene" uid="uid://dthitgmb75ld0" path="res://Entities/Player/Player.tscn" id="1_iauyl"]
 [ext_resource type="PackedScene" uid="uid://cr2afoktelagg" path="res://Entities/Player/Vector_Box.tscn" id="2_e12rw"]
+[ext_resource type="PackedScene" uid="uid://d23kb0druihp7" path="res://World/Building/Main_Wall.tscn" id="3_pxyqv"]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_iauyl")]
+[node name="Player" parent="." node_paths=PackedStringArray("vector_box") instance=ExtResource("1_iauyl")]
 position = Vector2(94, 330)
+vector_box = NodePath("../Vector_Box")
 
 [node name="Vector_Box" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_e12rw")]
 position = Vector2(-6, 8)
 player = NodePath("../Player")
+
+[node name="Main_Wall_EAST" parent="." instance=ExtResource("3_pxyqv")]
+position = Vector2(1268, 340)
+norm = Vector2(1, 0)
+
+[node name="Main_Wall_NORTH" parent="." instance=ExtResource("3_pxyqv")]
+position = Vector2(563, -51)
+rotation = 1.5708
+scale = Vector2(2, 2)
+norm = Vector2(0, 1)
+
+[node name="Main_Wall_WEST" parent="." instance=ExtResource("3_pxyqv")]
+position = Vector2(-137, 331)
+norm = Vector2(1, 0)
+
+[node name="Main_Wall_SOUTH" parent="." instance=ExtResource("3_pxyqv")]
+position = Vector2(548, 709)
+rotation = 1.5708
+scale = Vector2(2, 2)
+norm = Vector2(0, 1)

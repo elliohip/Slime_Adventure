@@ -3,7 +3,7 @@ extends Area2D
 class_name Vector_Box
 
 
-@export var max_length: int = 200;
+@export var max_length: int = 400;
 
 var touch_down = false;
 var position_start : Vector2;
@@ -52,7 +52,7 @@ func _input(event):
 		
 func _on_input_event(viewport, event, shape_idx):
 	
-	if (event.is_action_pressed("ui_touch")) :
+	if (event.is_action_pressed("ui_touch") and player.can_move) :
 		touch_down = true;
 		position_start = event.position
 	pass # Replace with function body.

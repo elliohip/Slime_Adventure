@@ -1,7 +1,9 @@
-extends Area2D
+extends Hitbox
 
-@export var norm : Vector2
+class_name Hitbox_Body
 
+
+@export var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,12 +13,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-
-func _on_area_entered(area):
-	
-	if (area is Hurtbox_Helmet) :
-		area.player.flip(norm);
-		print("player flipped")
-	pass # Replace with function body.

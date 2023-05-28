@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dthitgmb75ld0"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_dhvfn"]
-[ext_resource type="Script" path="res://boxes/Hit_Box/Hitbox.gd" id="2_ok0c2"]
+[ext_resource type="Script" path="res://Entities/Player/Hitbox_Body.gd" id="2_ev6p2"]
 [ext_resource type="Script" path="res://Entities/Player/Hurtbox_Helmet.gd" id="3_jg7np"]
 [ext_resource type="Texture2D" uid="uid://dgwks8raa5k72" path="res://Assets/Mini_Dungeon_v1.0/Characters/Slime.png" id="4_dm4jr"]
 
@@ -88,8 +88,9 @@ radius = 16.1245
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dhvfn")
 
-[node name="Hitbox_Body" type="Area2D" parent="."]
-script = ExtResource("2_ok0c2")
+[node name="Hitbox_Body" type="Area2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_ev6p2")
+player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Body"]
 shape = SubResource("CircleShape2D_6q7us")
