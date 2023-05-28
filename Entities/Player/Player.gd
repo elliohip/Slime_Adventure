@@ -2,7 +2,7 @@ extends Entity_Base
 
 class_name Player
 
-@export var acceleration : int = 0;
+@export var max_acceleration : int = 450;
 
 var friction = 100;
 
@@ -13,11 +13,15 @@ var can_move = true;
 @onready var helmet_marker : Marker2D = $Helmet_Marker;
 @onready var body_marker : Marker2D = $Player_Marker;
 
+var movement_direction : Vector2
+
 @export var vector_box : Vector_Box;
 
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D;
 
-var helmet_direction : Vector2;
-var helmet_magnitude : int = -83;
+
+var helmet_position : Vector2;
+var helmet_magnitude : int = 72;
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -26,6 +30,9 @@ var helmet_magnitude : int = -83;
 
 func _physics_process(delta):
 	
+	movement_direction = velocity.normalized()
+	
+	update_helmet();
 	apply_friction();
 	
 	# sets the can move variable for if the player can move
@@ -35,25 +42,39 @@ func _physics_process(delta):
 		can_move = false;
 		
 	
-	update_helmet()
+	
 	
 	move_and_slide();
 
 
 func update_helmet():
-	helmet_direction = -(vector_box.input_vector.limit_length(83))
-	helmet_marker.rotate(helmet_direction.angle());
-	helmet.position = helmet_marker.position
 	
+	if (vector_box.is_touch_down) :
+		helmet_position = (vector_box.input_vector.normalized() * helmet_magnitude)
+		helmet_marker.position = helmet_position
+		helmet.position = helmet_position
+		body_marker.position = body.position
+		var rotate_vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
+		helmet.rotation_degrees = rad_to_deg(rotate_vector.orthogonal().angle())
+		print(rotate_vector)
+		
+	else :
+		if (movement_direction.length() != 0) :
+			
+			helmet.position = movement_direction * helmet_magnitude;
+			helmet.rotation_degrees = rad_to_deg(movement_direction.orthogonal().angle())
+			#helmet.transform.r = (movement_direction * helmet_magnitude).angle();
+			#helmet.transform.rotation = (movement_direction * helmet_magnitude).angle();
 	
 	pass
 
 
 func apply_friction() :
-	velocity = velocity.move_toward(Vector2.ZERO, 1.3)
+	velocity = velocity.move_toward(Vector2.ZERO, 1.35)
 	# print(velocity)
 
 func flip(normal):
 	# Todo, should flip the player, and make the velocity negative
 	velocity = velocity.bounce(normal);
+	
 	pass

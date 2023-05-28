@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dthitgmb75ld0"]
+[gd_scene load_steps=17 format=3 uid="uid://dthitgmb75ld0"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_dhvfn"]
 [ext_resource type="Script" path="res://Entities/Player/Hitbox_Body.gd" id="2_ev6p2"]
@@ -9,8 +9,12 @@
 radius = 44.9222
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2n242"]
-radius = 37.9996
+radius = 27.0016
 height = 98.0041
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75lbp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c8w65"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mah6s"]
 atlas = ExtResource("4_dm4jr")
@@ -96,7 +100,7 @@ player = NodePath("..")
 shape = SubResource("CircleShape2D_6q7us")
 
 [node name="Hurtbox_Helmet" type="Area2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(0, -83)
+position = Vector2(0, -72)
 script = ExtResource("3_jg7np")
 player = NodePath("..")
 
@@ -104,8 +108,16 @@ player = NodePath("..")
 rotation = 1.57039
 shape = SubResource("CapsuleShape2D_2n242")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hurtbox_Helmet"]
+sprite_frames = SubResource("SpriteFrames_75lbp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hurtbox_Helmet"]
+position = Vector2(7.62939e-06, -9)
+scale = Vector2(-131.167, 69.0275)
+texture = SubResource("PlaceholderTexture2D_c8w65")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, -29)
+position = Vector2(-4, -29)
 scale = Vector2(7.98958, 10.0687)
 sprite_frames = SubResource("SpriteFrames_4ip0b")
 animation = &"idle"
@@ -115,10 +127,9 @@ animation = &"idle"
 [node name="Node" type="Node" parent="PlayerStateMachine"]
 
 [node name="Helmet_Marker" type="Marker2D" parent="."]
-position = Vector2(0, -83)
+position = Vector2(0, -72)
 
 [node name="Base_Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hmh2i")
 
 [node name="Player_Marker" type="Marker2D" parent="."]
-position = Vector2(0, -83)

@@ -5,7 +5,7 @@ class_name Vector_Box
 
 @export var max_length: int = 400;
 
-var touch_down = false;
+var is_touch_down = false;
 var position_start : Vector2;
 var position_end : Vector2;
 var input_vector : Vector2;
@@ -31,20 +31,20 @@ func _process(delta):
 	pass
 	
 func _draw():
-	if touch_down:
+	if is_touch_down:
 		draw_line(position_end, position_start, Color.BLUE, 8.0);
 
 func _input(event):
-	if not touch_down :
+	if not is_touch_down :
 		return
 	if (event is InputEventMouseMotion):
 		position_end = event.position
-		input_vector = -(position_end - position_start).limit_length(max_length)
+		input_vector = -(position_end - position_start).limit_length(player.max_acceleration)
 		
 		
 	if (event.is_action_released("ui_touch")):
-		touch_down = false;
-		player.velocity += input_vector
+		is_touch_down = false;
+		player.velocity = input_vector
 		reset()
 		
 		
@@ -53,6 +53,6 @@ func _input(event):
 func _on_input_event(viewport, event, shape_idx):
 	
 	if (event.is_action_pressed("ui_touch") and player.can_move) :
-		touch_down = true;
+		is_touch_down = true;
 		position_start = event.position
 	pass # Replace with function body.
