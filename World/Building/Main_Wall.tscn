@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d23kb0druihp7"]
+
+[ext_resource type="Script" path="res://World/Building/Main_Wall.gd" id="1_b0ndd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohe6y"]
+size = Vector2(26, 734)
+
+[node name="Main_Wall" type="Area2D"]
+script = ExtResource("1_b0ndd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ohe6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

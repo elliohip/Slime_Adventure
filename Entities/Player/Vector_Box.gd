@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Vector_Box
+
 
 @export var max_length: int = 200;
 

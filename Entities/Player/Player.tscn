@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dthitgmb75ld0"]
+[gd_scene load_steps=15 format=3 uid="uid://dthitgmb75ld0"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_dhvfn"]
 [ext_resource type="Script" path="res://boxes/Hit_Box/Hitbox.gd" id="2_ok0c2"]
@@ -82,11 +82,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmh2i"]
+radius = 16.1245
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dhvfn")
-health = null
-knockback = null
-friction = null
 
 [node name="Hitbox_Body" type="Area2D" parent="."]
 script = ExtResource("2_ok0c2")
@@ -94,11 +94,12 @@ script = ExtResource("2_ok0c2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Body"]
 shape = SubResource("CircleShape2D_6q7us")
 
-[node name="Hurtbox_Helmet" type="Area2D" parent="."]
+[node name="Hurtbox_Helmet" type="Area2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(0, -83)
 script = ExtResource("3_jg7np")
+player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_Helmet"]
-position = Vector2(0, -84)
 rotation = 1.57039
 shape = SubResource("CapsuleShape2D_2n242")
 
@@ -113,4 +114,10 @@ animation = &"idle"
 [node name="Node" type="Node" parent="PlayerStateMachine"]
 
 [node name="Helmet_Marker" type="Marker2D" parent="."]
+position = Vector2(0, -83)
+
+[node name="Base_Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hmh2i")
+
+[node name="Player_Marker" type="Marker2D" parent="."]
 position = Vector2(0, -83)
