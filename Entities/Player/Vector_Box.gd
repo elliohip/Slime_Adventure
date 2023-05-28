@@ -20,13 +20,19 @@ func _ready():
 	
 	pass # Replace with function body.
 
+func reset():
+	position_start = Vector2.ZERO;
+	position_end = Vector2.ZERO;
+	input_vector = Vector2.ZERO;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	queue_redraw()
 	pass
 	
 func _draw():
-	draw_line(position_end, position_start, Color.BLUE, 8.0);
+	if touch_down:
+		draw_line(position_end, position_start, Color.BLUE, 8.0);
 
 func _input(event):
 	if not touch_down :
@@ -34,9 +40,13 @@ func _input(event):
 	if (event is InputEventMouseMotion):
 		position_end = event.position
 		input_vector = -(position_end - position_start).limit_length(max_length)
-	
+		
+		
 	if (event.is_action_released("ui_touch")):
 		touch_down = false;
+		player.velocity += input_vector
+		reset()
+		
 		
 		
 		

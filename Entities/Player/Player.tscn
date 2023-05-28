@@ -104,8 +104,8 @@ rotation = 1.57039
 shape = SubResource("CapsuleShape2D_2n242")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-27, 510)
-scale = Vector2(8.0625, 11.0757)
+position = Vector2(-3, -29)
+scale = Vector2(7.98958, 10.0687)
 sprite_frames = SubResource("SpriteFrames_4ip0b")
 animation = &"idle"
 

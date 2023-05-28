@@ -6,9 +6,8 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_iauyl")]
-position = Vector2(94, 334)
+position = Vector2(94, 330)
 
 [node name="Vector_Box" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_e12rw")]
 position = Vector2(-6, 8)
-max_length = 200
 player = NodePath("../Player")
