@@ -50,17 +50,10 @@ func _physics_process(delta):
 func update_body(): 
 	var vector : Vector2;
 	
-	if (vector_box.is_touch_down) :
+	
+	if (movement_direction.length() != 0) :
+		body.rotation_degrees = rad_to_deg(-movement_direction.angle())
 		
-		vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
-		body.rotation_degrees = rad_to_deg(vector_box.input_vector.orthogonal().angle())
-		sprite.rotation_degrees = rad_to_deg(vector_box.input_vector.orthogonal().angle())
-		
-	else :
-		#vector = movement_direction
-		if (movement_direction.length() != 0) :
-			body.rotation_degrees = rad_to_deg(-(movement_direction.orthogonal()).angle())
-			sprite.rotation_degrees = rad_to_deg(-(movement_direction.orthogonal()).angle())
 
 
 func update_helmet():
