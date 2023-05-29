@@ -16,20 +16,16 @@ player = NodePath("../Player")
 
 [node name="Main_Wall_EAST" parent="." instance=ExtResource("3_pxyqv")]
 position = Vector2(1268, 340)
-norm = Vector2(1, 0)
 
 [node name="Main_Wall_NORTH" parent="." instance=ExtResource("3_pxyqv")]
 position = Vector2(563, -51)
 rotation = 1.5708
 scale = Vector2(2, 2)
-norm = Vector2(0, 1)
 
 [node name="Main_Wall_WEST" parent="." instance=ExtResource("3_pxyqv")]
 position = Vector2(-137, 331)
-norm = Vector2(1, 0)
 
 [node name="Main_Wall_SOUTH" parent="." instance=ExtResource("3_pxyqv")]
 position = Vector2(548, 709)
 rotation = 1.5708
 scale = Vector2(2, 2)
-norm = Vector2(0, 1)
