@@ -33,6 +33,7 @@ func _physics_process(delta):
 	movement_direction = velocity.normalized()
 	
 	update_helmet();
+	update_body();
 	apply_friction();
 	
 	# sets the can move variable for if the player can move
@@ -45,6 +46,21 @@ func _physics_process(delta):
 	
 	
 	move_and_slide();
+	
+func update_body(): 
+	var vector : Vector2;
+	
+	if (vector_box.is_touch_down) :
+		
+		vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
+		body.rotation_degrees = rad_to_deg(vector_box.input_vector.orthogonal().angle())
+		sprite.rotation_degrees = rad_to_deg(vector_box.input_vector.orthogonal().angle())
+		
+	else :
+		#vector = movement_direction
+		if (movement_direction.length() != 0) :
+			body.rotation_degrees = rad_to_deg(-(movement_direction.orthogonal()).angle())
+			sprite.rotation_degrees = rad_to_deg(-(movement_direction.orthogonal()).angle())
 
 
 func update_helmet():
