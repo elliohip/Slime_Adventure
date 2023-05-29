@@ -15,6 +15,8 @@ var can_move = true;
 
 var movement_direction : Vector2
 
+@export var health : int = 1;
+
 @export var vector_box : Vector_Box;
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D;
