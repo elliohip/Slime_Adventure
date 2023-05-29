@@ -32,7 +32,7 @@ func _process(delta):
 	
 func _draw():
 	if is_touch_down:
-		draw_line(position_end, position_start, Color.BLUE, 8.0);
+		draw_line(player.body.position, input_vector, Color.BLUE, 8.0)
 
 func _input(event):
 	if not is_touch_down :

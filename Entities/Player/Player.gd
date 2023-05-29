@@ -2,7 +2,7 @@ extends Entity_Base
 
 class_name Player
 
-@export var max_acceleration : int = 450;
+@export var max_acceleration : int = 750;
 
 var friction = 100;
 
@@ -81,7 +81,7 @@ func update_helmet():
 
 
 func apply_friction() :
-	velocity = velocity.move_toward(Vector2.ZERO, 1.35)
+	velocity = velocity.move_toward(Vector2.ZERO, 15)
 	# print(velocity)
 
 func flip(normal):
