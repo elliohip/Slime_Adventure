@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Adventure_Game_Jam"
-run/main_scene="res://User_Interface/Screens/Start_Screen/Start_Screen.tscn"
+run/main_scene="res://User_Interfaces/Menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
