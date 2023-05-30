@@ -18,3 +18,7 @@ player = NodePath("../Player")
 [node name="Main_Wall_Side" parent="." instance=ExtResource("3_5i1cr")]
 position = Vector2(-14, 311)
 scale = Vector2(1, 3.44)
+
+[node name="Main_Wall_Side2" parent="." instance=ExtResource("3_5i1cr")]
+position = Vector2(1160, 353)
+scale = Vector2(1, 3.28)
