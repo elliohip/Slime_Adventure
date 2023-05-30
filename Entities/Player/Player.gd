@@ -8,7 +8,7 @@ var friction = 100;
 
 var can_move = true;
 
-@onready var helmet : Hurtbox = $Hurtbox_Helmet;
+@onready var helmet : Helmet = $Helmet;
 @onready var body : Hitbox = $Hitbox_Body;
 @onready var helmet_marker : Marker2D = $Helmet_Marker;
 @onready var body_marker : Marker2D = $Player_Marker;
@@ -24,6 +24,8 @@ var movement_direction : Vector2
 
 var helmet_position : Vector2;
 var helmet_magnitude : int = 72;
+
+var collision;
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -44,9 +46,8 @@ func _physics_process(delta):
 	else : 
 		can_move = false;
 		
-	
-	
-	
+		
+		
 	move_and_slide();
 	
 
@@ -59,7 +60,7 @@ func update_helmet():
 		body_marker.position = body.position
 		var rotate_vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
 		helmet.rotation_degrees = rad_to_deg(rotate_vector.orthogonal().angle())
-		print(rotate_vector)
+		# print(rotate_vector)
 		
 	else :
 		if (movement_direction.length() != 0) :
@@ -80,4 +81,16 @@ func flip(normal):
 	# Todo, should flip the player, and make the velocity negative
 	velocity = velocity.bounce(normal);
 	
+	
 	pass
+	
+func handle_collision():
+	var collide = move_and_collide(Vector2.ZERO)
+	
+	if (collide != null):
+		flip(collide.get_normal())
+		pass
+	
+	pass
+	
+		

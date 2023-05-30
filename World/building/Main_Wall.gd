@@ -1,11 +1,8 @@
 extends StaticBody2D
 
-class_name Helmet
+class_name Main_Wall
 
-@export var damage : float = 0.0;
-@export var player : Player;
-
-@onready var sprite : Sprite2D = $Sprite2D
+var norm = Vector2.AXIS_Y
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,12 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var collide = move_and_collide(Vector2.ZERO)
 	
-	if (collide != null):
-		player.flip(collide.get_normal())
-		pass
 	
 	pass
-	
 
+func get_normal():
+	return norm
