@@ -90,6 +90,7 @@ animations = [{
 radius = 16.1245
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(511, 290)
 script = ExtResource("1_dhvfn")
 
 [node name="Hitbox_Body" type="Area2D" parent="." node_paths=PackedStringArray("player")]

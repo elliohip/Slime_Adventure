@@ -35,7 +35,6 @@ func _physics_process(delta):
 	movement_direction = velocity.normalized()
 	
 	update_helmet();
-
 	apply_friction();
 	
 	# sets the can move variable for if the player can move
@@ -44,11 +43,7 @@ func _physics_process(delta):
 	else : 
 		can_move = false;
 		
-	
-	
-	
 	move_and_slide();
-	
 
 func update_helmet():
 	
@@ -59,12 +54,12 @@ func update_helmet():
 		body_marker.position = body.position
 		var rotate_vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
 		helmet.rotation_degrees = rad_to_deg(rotate_vector.orthogonal().angle())
-		print(rotate_vector)
+		
 		
 	else :
 		if (movement_direction.length() != 0) :
 			
-			helmet.position = movement_direction * helmet_magnitude;
+			helmet.position = movement_direction * helmet_magnitude
 			helmet.rotation_degrees = rad_to_deg(movement_direction.orthogonal().angle())
 			#helmet.transform.r = (movement_direction * helmet_magnitude).angle();
 			#helmet.transform.rotation = (movement_direction * helmet_magnitude).angle();
@@ -78,6 +73,4 @@ func apply_friction() :
 
 func flip(normal):
 	# Todo, should flip the player, and make the velocity negative
-	velocity = velocity.bounce(normal);
-	
-	pass
+	velocity = velocity.bounce(normal)
