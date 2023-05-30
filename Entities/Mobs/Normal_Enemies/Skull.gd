@@ -1,4 +1,4 @@
-extends Entity_Base
+extends Mob_Base
 
 
 
