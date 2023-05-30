@@ -1,12 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://4g3uhosvyfh"]
+[gd_scene load_steps=3 format=3 uid="uid://4g3uhosvyfh"]
 
-[ext_resource type="PackedScene" uid="uid://dthitgmb75ld0" path="res://Entities/Player/Player.tscn" id="1_iauyl"]
+[ext_resource type="PackedScene" uid="uid://cya3pt1r584my" path="res://Entities/Player/Player.tscn" id="1_iauyl"]
 [ext_resource type="PackedScene" uid="uid://cr2afoktelagg" path="res://Entities/Player/Vector_Box.tscn" id="2_e12rw"]
-[ext_resource type="PackedScene" uid="uid://d23kb0druihp7" path="res://World/Building/Main_Wall.tscn" id="3_pxyqv"]
-[ext_resource type="Script" path="res://World/Building/Main_Wall_EAST.gd" id="4_8kfip"]
-[ext_resource type="Script" path="res://World/Building/Main_Wall_NORTH.gd" id="5_5ksbi"]
-[ext_resource type="Script" path="res://World/Building/Main_Wall_WEST.gd" id="6_fl8uy"]
-[ext_resource type="Script" path="res://World/Building/Main_Wall_SOUTH.gd" id="7_pg2wp"]
 
 [node name="World" type="Node2D"]
 
@@ -18,23 +13,3 @@ vector_box = NodePath("../Vector_Box")
 position = Vector2(-531, -246)
 scale = Vector2(1.88, 1.8)
 player = NodePath("../Player")
-
-[node name="Main_Wall_EAST" parent="." instance=ExtResource("3_pxyqv")]
-position = Vector2(1268, 340)
-script = ExtResource("4_8kfip")
-
-[node name="Main_Wall_NORTH" parent="." instance=ExtResource("3_pxyqv")]
-position = Vector2(563, -51)
-rotation = 1.5708
-scale = Vector2(2, 2)
-script = ExtResource("5_5ksbi")
-
-[node name="Main_Wall_WEST" parent="." instance=ExtResource("3_pxyqv")]
-position = Vector2(-137, 331)
-script = ExtResource("6_fl8uy")
-
-[node name="Main_Wall_SOUTH" parent="." instance=ExtResource("3_pxyqv")]
-position = Vector2(548, 709)
-rotation = 1.5708
-scale = Vector2(2, 2)
-script = ExtResource("7_pg2wp")

@@ -1,6 +1,6 @@
-extends Hurtbox
+extends StaticBody2D
 
-class_name Hurtbox_Helmet
+class_name Helmet
 
 @export var damage : float = 0.0;
 @export var player : Player;
@@ -14,9 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var collision_info = move_and_collide()
+	var collision_info = move_and_collide(player.velocity)
 	if (collision_info):
-		player.velocity = -(player.velocity)
+		player.velocity = player.velocity.bounce()
 	pass
 	
 
