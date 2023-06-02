@@ -15,7 +15,7 @@ var can_move = true;
 
 var movement_direction : Vector2
 
-@export var health : int = 1;
+
 
 @export var vector_box : Vector_Box;
 
@@ -30,6 +30,9 @@ var collision;
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
+func _ready():
+	health = 1;
+	
 
 
 func _physics_process(delta):
@@ -94,3 +97,6 @@ func handle_collision():
 	pass
 	
 		
+
+func apply_damage(d) : 
+	health = health - d;

@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Hitbox
 
-
+@export var root : CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

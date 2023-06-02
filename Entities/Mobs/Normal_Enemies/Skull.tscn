@@ -1,13 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqln1jrggt1a4"]
+[gd_scene load_steps=5 format=3 uid="uid://bqln1jrggt1a4"]
 
 [ext_resource type="Script" path="res://Entities/Mobs/Normal_Enemies/Skull.gd" id="1_3dro6"]
+[ext_resource type="Script" path="res://boxes/Hit_Box/Hitbox.gd" id="2_e61cx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbvki"]
 radius = 30.0
 height = 92.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ynmmi"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
 
 [node name="Skull" type="CharacterBody2D"]
 script = ExtResource("1_3dro6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qbvki")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ynmmi")
+animation = &"Moving"
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("2_e61cx")
+root = NodePath("..")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

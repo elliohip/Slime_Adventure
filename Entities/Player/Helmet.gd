@@ -18,8 +18,10 @@ func _process(delta):
 	
 	if (collide != null):
 		player.flip(collide.get_normal())
+		
 		pass
 	
 	pass
+	damage = ceil(max(player.velocity.x, player.velocity.y) / 1000)
 	
 

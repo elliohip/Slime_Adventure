@@ -2,11 +2,8 @@ extends Entity_Base
 
 class_name Mob_Base
 
-enum STATES {
-	looking, 
-	moving_toward,
-	
-}
+var max_speed : int = 150
+var speed : int = 100
 
 
 # Called when the node enters the scene tree for the first time.
