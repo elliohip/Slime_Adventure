@@ -14,3 +14,5 @@ func _process(delta):
 	pass
 	
 
+func damage_owner():
+	pass

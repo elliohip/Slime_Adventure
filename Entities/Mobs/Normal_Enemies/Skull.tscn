@@ -1,24 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqln1jrggt1a4"]
+[gd_scene load_steps=11 format=3 uid="uid://bqln1jrggt1a4"]
 
 [ext_resource type="Script" path="res://Entities/Mobs/Normal_Enemies/Skull.gd" id="1_3dro6"]
-[ext_resource type="Script" path="res://boxes/Hit_Box/Hitbox.gd" id="2_e61cx"]
+[ext_resource type="Texture2D" uid="uid://b2kjq0bl0s0b0" path="res://Assets/Basic Undead/SwordsMan.png" id="2_fkdqi"]
+[ext_resource type="Script" path="res://Entities/Mobs/Normal_Enemies/Hitbox_Skull.gd" id="3_5gxj7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbvki"]
-radius = 30.0
+radius = 18.0
 height = 92.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpxcv"]
+atlas = ExtResource("2_fkdqi")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u6tc"]
+atlas = ExtResource("2_fkdqi")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlldm"]
+atlas = ExtResource("2_fkdqi")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c83ro"]
+atlas = ExtResource("2_fkdqi")
+region = Rect2(192, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ynmmi"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpxcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u6tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlldm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c83ro")
+}],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Moving",
-"speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aowbt"]
+radius = 20.0
+height = 96.0
 
 [node name="Skull" type="CharacterBody2D"]
 script = ExtResource("1_3dro6")
@@ -27,11 +55,18 @@ script = ExtResource("1_3dro6")
 shape = SubResource("CapsuleShape2D_qbvki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -17)
+scale = Vector2(4.14062, 5.4375)
 sprite_frames = SubResource("SpriteFrames_ynmmi")
-animation = &"Moving"
+animation = &"Idle"
+frame = 2
+frame_progress = 0.399244
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("2_e61cx")
+script = ExtResource("3_5gxj7")
 root = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_aowbt")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
