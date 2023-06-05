@@ -2,6 +2,7 @@ extends Entity_Base
 
 class_name Player
 
+
 @export var max_acceleration : int = 750;
 
 var friction = 100;
@@ -31,6 +32,7 @@ var collision;
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 func _ready():
+	Globals.set("player", self)
 	health = 1;
 	
 
