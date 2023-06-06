@@ -16,12 +16,13 @@ func _ready():
 func _process(delta):
 	var collide = move_and_collide(Vector2.ZERO)
 	
-	if (collide != null):
+	if (collide != null and !(collide.get_class is Mob_Base)):
 		player.flip(collide.get_normal())
 		
 		pass
 	
 	pass
-	damage = ceil(max(player.velocity.x, player.velocity.y) / 1000)
+	
+	damage = ceil(max(abs(player.velocity.x), abs(player.velocity.y)) / 1000)
 	
 

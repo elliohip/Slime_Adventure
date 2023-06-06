@@ -42,6 +42,8 @@ func _physics_process(delta):
 	movement_direction = velocity.normalized()
 	
 	update_helmet();
+	
+	handle_collision();
 
 	apply_friction();
 	
@@ -52,6 +54,8 @@ func _physics_process(delta):
 		can_move = false;
 		
 		
+	if (health <= 0) :
+		die()
 		
 	move_and_slide();
 	
@@ -92,7 +96,7 @@ func flip(normal):
 func handle_collision():
 	var collide = move_and_collide(Vector2.ZERO)
 	
-	if (collide != null):
+	if (collide != null and !(collide.get_class is Mob_Base)):
 		flip(collide.get_normal())
 		pass
 	
@@ -102,3 +106,8 @@ func handle_collision():
 
 func apply_damage(d) : 
 	health = health - d;
+
+func die():
+	# TODO add animation
+	
+	queue_free();

@@ -134,3 +134,5 @@ position = Vector2(0, -72)
 shape = SubResource("CircleShape2D_hmh2i")
 
 [node name="Player_Marker" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="Hitbox_Body" to="Hitbox_Body" method="_on_body_entered"]

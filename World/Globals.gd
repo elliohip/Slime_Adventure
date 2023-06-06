@@ -2,6 +2,8 @@ extends Node
 
 @export var player : Player
 
+# global enemies, all should be a mob_base
+var enemies = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
