@@ -12,6 +12,8 @@ class_name Skull
 
 
 
+
+
 var target: Vector2 = Vector2(60.0,180.0)
 
 var direction = Vector2.ZERO;
@@ -21,6 +23,8 @@ func _ready():
 	health = 1
 	damage = 1
 	speed = 50
+	
+	max_speed = 100
 	
 	call_deferred("actor_setup")
 
@@ -41,7 +45,22 @@ func actor_setup():
 	pass
 
 func _physics_process(delta):
+	if (navigation_agent.is_navigation_finished()):
+		return
+		
+	if (globals.player.position != navigation_agent.target_position):
+		
+		
+		set_target(globals.player.position)
+		
+	var current_agent_position: Vector2 = global_position
+	var next_position: Vector2 = navigation_agent.get_next_path_position()
 	
+	var next_velocity = next_position - current_agent_position
+	
+	velocity = velocity.move_toward(next_velocity.normalized() * max_speed, speed) 
+	
+	direction = next_velocity.normalized()
 	
 	move_and_slide()
 
