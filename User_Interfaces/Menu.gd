@@ -12,7 +12,10 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
+	#Globals.enemy_count = 1
+	
 	get_tree().change_scene_to_file("res://World/world.tscn")
+	
 
 
 func _on_quit_button_pressed():

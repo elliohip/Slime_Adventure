@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ulukuy4onjes"]
+
+[ext_resource type="Script" path="res://World/Spawners/SkullSpawner.gd" id="1_l8nj7"]
+
+[node name="SkullSpawner" type="Node2D"]
+script = ExtResource("1_l8nj7")

@@ -1,19 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://4g3uhosvyfh"]
+[gd_scene load_steps=5 format=3 uid="uid://4g3uhosvyfh"]
 
-[ext_resource type="Script" path="res://World/Globals.gd" id="1_7jm24"]
 [ext_resource type="PackedScene" uid="uid://cya3pt1r584my" path="res://Entities/Player/Player.tscn" id="1_iauyl"]
 [ext_resource type="PackedScene" uid="uid://cr2afoktelagg" path="res://Entities/Player/Vector_Box.tscn" id="2_e12rw"]
 [ext_resource type="PackedScene" uid="uid://cdmp3wjbw74mq" path="res://World/building/Main_Wall_Side.tscn" id="3_5i1cr"]
-[ext_resource type="PackedScene" uid="uid://bqln1jrggt1a4" path="res://Entities/Mobs/Normal_Enemies/Skull.tscn" id="4_lklh3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8ont0"]
-vertices = PackedVector2Array(66, 55, 1092, 55, 1074, 607, 55, 620)
+vertices = PackedVector2Array(66, 55, 1092, 55, 1079, 638, 55, 620)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(66, 55, 1092, 55, 1074, 607, 55, 620)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(66, 55, 1092, 55, 1079, 638, 55, 620)])
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player")]
-script = ExtResource("1_7jm24")
-player = NodePath("Player")
+[node name="World" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("vector_box") instance=ExtResource("1_iauyl")]
 position = Vector2(94, 330)
@@ -41,9 +37,6 @@ scale = Vector2(1, 5.23097)
 position = Vector2(589, -10)
 rotation = 1.5708
 scale = Vector2(1, 4.88)
-
-[node name="Skull" parent="." instance=ExtResource("4_lklh3")]
-position = Vector2(913, 223)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(0, -18)

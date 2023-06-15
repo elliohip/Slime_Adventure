@@ -1,15 +1,17 @@
 extends Node
 
-@export var player : Player
+var rand = RandomNumberGenerator.new()
 
-# global enemies, all should be a mob_base
-var enemies = []
+@onready var screen_size = get_viewport().get_visible_rect().size
+
+@onready var player : Player = $Player
+
+@onready var skull_scene = preload("res://Entities/Mobs/Normal_Enemies/Skull.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
