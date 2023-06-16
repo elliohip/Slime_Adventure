@@ -8,7 +8,7 @@ var rand = RandomNumberGenerator.new()
 
 @onready var skull_scene = preload("res://Entities/Mobs/Normal_Enemies/Skull.tscn")
 
-
+@onready var level = 0
 
 
 

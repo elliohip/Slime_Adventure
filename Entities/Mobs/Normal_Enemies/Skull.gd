@@ -76,6 +76,7 @@ func _on_hitbox_body_entered(body):
 		body.player.apply_damage(1)
 		
 	if (body is Helmet):
+		print(body.damage)
 		apply_damage(body.damage)
 	
 	pass # Replace with function body.

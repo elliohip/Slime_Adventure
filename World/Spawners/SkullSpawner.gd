@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var globals = get_node("/root/Globals")
 
+@onready var spawn_count = globals.level + 1
+
 @export var world : Node2D
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +22,7 @@ func _process(delta):
 	pass
 	
 func spawn_skulls():
-	for i in range(0,globals.enemy_count):
+	for i in range(0, spawn_count):
 			var enemy = globals.skull_scene.instantiate()
 			globals.enemies.append(enemy)
 			
@@ -30,3 +32,5 @@ func spawn_skulls():
 			enemy.position.y = globals.rand.randi_range(0, globals.screen_size.y)
 			world.add_child(enemy)
 	pass # Replace with function body.
+	
+	spawn_count += 1;

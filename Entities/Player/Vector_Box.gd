@@ -45,6 +45,8 @@ func _input(event):
 	if (event.is_action_released("ui_touch")):
 		is_touch_down = false;
 		player.velocity = input_vector
+		
+		player.helmet.damage = ceil(max(abs(input_vector.x), abs(input_vector.y)) / 1000)
 		reset()
 		
 		

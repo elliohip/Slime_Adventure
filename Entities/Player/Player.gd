@@ -97,9 +97,11 @@ func flip(normal):
 	pass
 	
 func handle_collision():
-	var collide = move_and_collide(Vector2.ZERO)
+	var collide = helmet.move_and_collide(Vector2.ZERO)
 	
-	if (collide != null and !(collide.get_class is Mob_Base)):
+	if (collide != null and collide.get_class() == "Main_Wall"):
+		
+		print(collide.get_collider().get_class())
 		flip(collide.get_normal())
 		pass
 	

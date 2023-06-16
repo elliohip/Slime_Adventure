@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	var collide = move_and_collide(Vector2.ZERO)
 	
-	if (collide != null and !(collide.get_class is Mob_Base)):
+	if (collide != null and collide.get_class() == "Main_Wall"):
 		player.flip(collide.get_normal())
 		
 		pass
