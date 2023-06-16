@@ -42,7 +42,7 @@ func _physics_process(delta):
 	movement_direction = velocity.normalized()
 	
 	
-	print(globals.enemy_count)
+	# print(globals.enemy_count)
 	
 	update_helmet();
 	

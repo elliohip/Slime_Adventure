@@ -1,23 +1,32 @@
 extends Node2D
 
 
+@onready var globals = get_node("/root/Globals")
+
+@export var world : Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	print(globals.enemy_count)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if (len(enemies) == 0 and enemy_count != 0):
-		for i in range(0,enemy_count):
-			var enemy = skull_scene.instantiate()
-			enemies.append(enemy)
-			
-			rand.randomize()
-			enemy.position.x = rand.randi_range(0, screen_size.x)
-			rand.randomize()
-			enemy.position.y = rand.randi_range(0, screen_size.y)
-			
-		pass # Replace with function body.
+	if (len(globals.enemies) == 0 and globals.enemy_count != 0):
+		spawn_skulls()
 	pass
+	
+func spawn_skulls():
+	for i in range(0,globals.enemy_count):
+			var enemy = globals.skull_scene.instantiate()
+			globals.enemies.append(enemy)
+			
+			globals.rand.randomize()
+			enemy.position.x = globals.rand.randi_range(0, globals.screen_size.x)
+			globals.rand.randomize()
+			enemy.position.y = globals.rand.randi_range(0, globals.screen_size.y)
+			world.add_child(enemy)
+	pass # Replace with function body.

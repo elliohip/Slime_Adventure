@@ -9,6 +9,7 @@ class_name Skull
 
 @onready var player : Player 
 
+# var globals = get_node("/root/Globals")
 
 
 
@@ -30,8 +31,12 @@ func _ready():
 
 func _process(delta):
 	if (health <= 0): 
-		queue_free()
+		die()
 	pass
+
+func die():
+	globals.enemies.erase(self)
+	queue_free()
 
 func set_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
