@@ -10,7 +10,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	print(globals.enemy_count)
+	# print(globals.enemy_count)
 	pass # Replace with function body.
 
 

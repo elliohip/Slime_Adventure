@@ -6,8 +6,9 @@ class_name Skull
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
-
 @onready var player : Player 
+
+@onready var state_machine = $SkullStateMachine
 
 # var globals = get_node("/root/Globals")
 
@@ -53,8 +54,15 @@ func _physics_process(delta):
 	if (navigation_agent.is_navigation_finished()):
 		return
 		
-	if (globals.player.position != navigation_agent.target_position):
+	if (is_knockback):
+		update_knockback()
+		is_knockback = false
+		move_and_slide()
 		
+		return
+		
+	
+	if (globals.player.position != navigation_agent.target_position):
 		
 		set_target(globals.player.position)
 		
@@ -78,8 +86,38 @@ func _on_hitbox_body_entered(body):
 	if (body is Helmet):
 		print(body.damage)
 		apply_damage(body.damage)
+		knock()
+		
 	
 	pass # Replace with function body.
 
 func apply_damage(d):
 	health -= d
+
+func knock():
+	is_knockback = true
+	
+
+func update_knockback():
+	var knockback_vector = Vector2.ZERO
+	
+	if (position.y <= globals.player.position.y):
+		knockback_vector.y = -50
+		if (position.x < globals.player.position.x):
+			knockback_vector.x = -500
+		else:
+			knockback_vector.x = 500
+			
+			
+	else:
+		
+		knockback_vector.y = 50
+		if (position.x < globals.player.position.x):
+			knockback_vector.x = -500
+		else:
+			knockback_vector.x = 500
+			
+	print(knockback_vector)
+	velocity = knockback_vector
+	
+	

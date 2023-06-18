@@ -101,6 +101,7 @@ shape = SubResource("CircleShape2D_6q7us")
 
 [node name="Helmet" type="StaticBody2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(0, -72)
+disable_mode = 1
 script = ExtResource("3_a0rhl")
 player = NodePath("..")
 

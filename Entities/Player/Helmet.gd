@@ -21,8 +21,9 @@ func _process(delta):
 		
 		pass
 	
-	pass
-	
 	damage = ceil(max(abs(player.velocity.x), abs(player.velocity.y)) / 1000)
 	
+	
+
+
 

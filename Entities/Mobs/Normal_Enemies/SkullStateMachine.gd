@@ -1,21 +1,17 @@
-extends CharacterBody2D
+extends Node2D
 
-class_name Entity_Base
+class_name SkullStateMachine
 
+var current_state = null
 
-var health = 0
-var knockback_resist : float = 1.0
+var states = []
 
-@onready var globals = get_node("/root/Globals")
-
-var knockback = 0
-
-var is_knockback = false;
-
-var damage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for child in get_children():
+		states.append(child)
+		
 	pass # Replace with function body.
 
 
