@@ -14,9 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var collision_info = move_and_collide()
-	if (collision_info):
-		player.velocity = -(player.velocity)
+	
 	pass
 	
 

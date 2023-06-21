@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://4g3uhosvyfh"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_btp2j"]
-[ext_resource type="PackedScene" uid="uid://cya3pt1r584my" path="res://Entities/Player/Player.tscn" id="1_iauyl"]
+[ext_resource type="PackedScene" uid="uid://bdle4c30emk3a" path="res://Entities/Player/Player.tscn" id="1_iauyl"]
 [ext_resource type="PackedScene" uid="uid://cr2afoktelagg" path="res://Entities/Player/Vector_Box.tscn" id="2_e12rw"]
 [ext_resource type="PackedScene" uid="uid://cdmp3wjbw74mq" path="res://World/building/Main_Wall_Side.tscn" id="3_5i1cr"]
 [ext_resource type="PackedScene" uid="uid://ulukuy4onjes" path="res://World/Spawners/SkullSpawner.tscn" id="5_3jdyr"]
@@ -14,9 +14,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(66, 55, 1092, 55, 1079,
 [node name="World" type="Node2D"]
 script = ExtResource("1_btp2j")
 
-[node name="Player" parent="." node_paths=PackedStringArray("vector_box") instance=ExtResource("1_iauyl")]
+[node name="Player" parent="." instance=ExtResource("1_iauyl")]
 position = Vector2(94, 330)
-vector_box = NodePath("../Vector_Box")
 
 [node name="Vector_Box" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_e12rw")]
 position = Vector2(-516, -210)

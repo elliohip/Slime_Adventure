@@ -9,7 +9,7 @@ var friction = 100;
 
 var can_move = true;
 
-@onready var helmet : Helmet = $Helmet;
+@onready var weapon :  = $Weapon;
 @onready var body : Hitbox = $Hitbox_Body;
 @onready var helmet_marker : Marker2D = $Helmet_Marker;
 @onready var body_marker : Marker2D = $Player_Marker;

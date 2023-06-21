@@ -83,7 +83,7 @@ func _on_hitbox_body_entered(body):
 	if (body is Hitbox_Body) :
 		body.player.apply_damage(1)
 		
-	if (body is Helmet):
+	if (body is Sheild):
 		print(body.damage)
 		apply_damage(body.damage)
 		knock()

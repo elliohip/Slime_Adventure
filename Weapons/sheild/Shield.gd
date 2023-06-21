@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-class_name Helmet
+class_name Sheild
 
-@export var damage : float = 0.0;
-@export var player : Player;
+@export var damage : float = 0.0
+@export var player : Player
 
 @onready var sprite : Sprite2D = $Sprite2D
 
