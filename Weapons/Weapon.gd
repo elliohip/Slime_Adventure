@@ -5,7 +5,8 @@ class_name Weapon
 @onready var current_weapon = preload("res://Weapons/weapon_types/Shield/Shield.tscn")
 
 @export var damage : float = 0.0
-@export var player : Player
+@onready var globals = get_node("/root/Globals")
+@onready var player : Player = globals.player
 
 
 # Called when the node enters the scene tree for the first time.

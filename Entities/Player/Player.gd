@@ -5,15 +5,15 @@ class_name Player
 
 @export var max_acceleration : int = 750;
 
-@onready var weapons = get_node("/root/WeaponTypes")
+@onready var weapon_types = get_node("/root/WeaponTypes")
 
 var friction = 100;
 
 var can_move = true;
 
-@onready var weapon
+@onready var weapon = weapon_types.current_weapon.instantiate()
 @onready var body : Hitbox = $Hitbox_Body;
-@onready var helmet_marker : Marker2D = $Helmet_Marker;
+@onready var weapon_marker : Marker2D = $Helmet_Marker;
 @onready var body_marker : Marker2D = $Player_Marker;
 
 var movement_direction : Vector2
@@ -25,8 +25,8 @@ var movement_direction : Vector2
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D;
 
 
-var helmet_position : Vector2;
-var helmet_magnitude : int = 72;
+var weapon_position : Vector2;
+var weapon_magnitude : int = 72;
 
 var collision;
 
@@ -37,7 +37,9 @@ func _ready():
 	Globals.set("player", self)
 	health = 1;
 	
-	weapon = weapons.current_weapon.instantiate()
+	add_child(weapon)
+	weapon.position = weapon_marker.position
+	
 	
 
 
@@ -70,18 +72,18 @@ func _physics_process(delta):
 func update_helmet():
 	
 	if (vector_box.is_touch_down) :
-		helmet_position = (vector_box.input_vector.normalized() * helmet_magnitude)
-		helmet_marker.position = helmet_position
-		weapon.position = helmet_position
+		weapon_position = (vector_box.input_vector.normalized() * weapon_magnitude)
+		weapon_marker.position = weapon_position
+		weapon.position = weapon_position
 		body_marker.position = body.position
-		var rotate_vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
+		var rotate_vector = Vector2(weapon_position.x - body_marker.position.x, weapon_position.y - body_marker.position.y);
 		weapon.rotation_degrees = rad_to_deg(rotate_vector.orthogonal().angle())
 		# print(rotate_vector)
 		
 	else :
 		if (movement_direction.length() != 0) :
 			
-			weapon.position = movement_direction * helmet_magnitude;
+			weapon.position = movement_direction * weapon_magnitude;
 			weapon.rotation_degrees = rad_to_deg(movement_direction.orthogonal().angle())
 			#helmet.transform.r = (movement_direction * helmet_magnitude).angle();
 			#helmet.transform.rotation = (movement_direction * helmet_magnitude).angle();
