@@ -1,9 +1,8 @@
-extends StaticBody2D
+extends Weapon
 
 class_name Sheild
 
-@export var damage : float = 0.0
-@export var player : Player
+
 
 @onready var sprite : Sprite2D = $Sprite2D
 

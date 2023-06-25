@@ -5,11 +5,13 @@ class_name Player
 
 @export var max_acceleration : int = 750;
 
+@onready var weapons = get_node("/root/WeaponTypes")
+
 var friction = 100;
 
 var can_move = true;
 
-@onready var weapon :  = $Weapon;
+@onready var weapon
 @onready var body : Hitbox = $Hitbox_Body;
 @onready var helmet_marker : Marker2D = $Helmet_Marker;
 @onready var body_marker : Marker2D = $Player_Marker;
@@ -34,6 +36,8 @@ var collision;
 func _ready():
 	Globals.set("player", self)
 	health = 1;
+	
+	weapon = weapons.current_weapon
 	
 
 
@@ -68,17 +72,17 @@ func update_helmet():
 	if (vector_box.is_touch_down) :
 		helmet_position = (vector_box.input_vector.normalized() * helmet_magnitude)
 		helmet_marker.position = helmet_position
-		helmet.position = helmet_position
+		weapon.position = helmet_position
 		body_marker.position = body.position
 		var rotate_vector = Vector2(helmet_position.x - body_marker.position.x, helmet_position.y - body_marker.position.y);
-		helmet.rotation_degrees = rad_to_deg(rotate_vector.orthogonal().angle())
+		weapon.rotation_degrees = rad_to_deg(rotate_vector.orthogonal().angle())
 		# print(rotate_vector)
 		
 	else :
 		if (movement_direction.length() != 0) :
 			
-			helmet.position = movement_direction * helmet_magnitude;
-			helmet.rotation_degrees = rad_to_deg(movement_direction.orthogonal().angle())
+			weapon.position = movement_direction * helmet_magnitude;
+			weapon.rotation_degrees = rad_to_deg(movement_direction.orthogonal().angle())
 			#helmet.transform.r = (movement_direction * helmet_magnitude).angle();
 			#helmet.transform.rotation = (movement_direction * helmet_magnitude).angle();
 	
@@ -97,7 +101,7 @@ func flip(normal):
 	pass
 	
 func handle_collision():
-	var collide = helmet.move_and_collide(Vector2.ZERO)
+	var collide = weapon.move_and_collide(Vector2.ZERO)
 	
 	if (collide != null and collide.get_class() == "Main_Wall"):
 		

@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdle4c30emk3a"]
+[gd_scene load_steps=17 format=3 uid="uid://bda437ac7sl2f"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_dhvfn"]
 [ext_resource type="Script" path="res://Entities/Player/Hitbox_Body.gd" id="2_ev6p2"]
-[ext_resource type="Script" path="res://Weapons/sheild/Shield.gd" id="3_pobn3"]
+[ext_resource type="Script" path="res://Weapons/weapon_types/Shield/Shield.gd" id="3_ytd6v"]
 [ext_resource type="Texture2D" uid="uid://dgwks8raa5k72" path="res://Assets/Mini_Dungeon_v1.0/Characters/Slime.png" id="4_dm4jr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q7us"]
@@ -91,7 +91,6 @@ radius = 16.1245
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dhvfn")
-max_acceleration = null
 
 [node name="Hitbox_Body" type="Area2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_ev6p2")
@@ -103,7 +102,7 @@ shape = SubResource("CircleShape2D_6q7us")
 [node name="Weapon" type="StaticBody2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(0, -72)
 disable_mode = 1
-script = ExtResource("3_pobn3")
+script = ExtResource("3_ytd6v")
 player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
