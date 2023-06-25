@@ -46,7 +46,7 @@ func _input(event):
 		is_touch_down = false;
 		player.velocity = input_vector
 		
-		player.helmet.damage = ceil(max(abs(input_vector.x), abs(input_vector.y)) / 1000)
+		player.weapon.damage = ceil(max(abs(input_vector.x), abs(input_vector.y)) / 1000)
 		reset()
 		
 		

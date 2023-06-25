@@ -4,7 +4,7 @@ class_name Sheild
 
 
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : Sprite2D = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	sprite.play("default")
 	var collide = move_and_collide(Vector2.ZERO)
 	
 	if (collide != null and collide.get_class() == "Main_Wall"):

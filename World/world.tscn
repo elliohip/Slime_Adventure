@@ -14,8 +14,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(66, 55, 1092, 55, 1079,
 [node name="World" type="Node2D"]
 script = ExtResource("1_btp2j")
 
-[node name="Player" parent="." instance=ExtResource("1_iauyl")]
+[node name="Player" parent="." node_paths=PackedStringArray("vector_box") instance=ExtResource("1_iauyl")]
 position = Vector2(94, 330)
+vector_box = NodePath("../Vector_Box")
 
 [node name="Vector_Box" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_e12rw")]
 position = Vector2(-516, -210)

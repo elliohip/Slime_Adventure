@@ -1,20 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bda437ac7sl2f"]
+[gd_scene load_steps=13 format=3 uid="uid://bda437ac7sl2f"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_dhvfn"]
 [ext_resource type="Script" path="res://Entities/Player/Hitbox_Body.gd" id="2_ev6p2"]
-[ext_resource type="Script" path="res://Weapons/weapon_types/Shield/Shield.gd" id="3_ytd6v"]
 [ext_resource type="Texture2D" uid="uid://dgwks8raa5k72" path="res://Assets/Mini_Dungeon_v1.0/Characters/Slime.png" id="4_dm4jr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q7us"]
 radius = 44.9222
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2n242"]
-radius = 27.0016
-height = 98.0041
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_75lbp"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c8w65"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mah6s"]
 atlas = ExtResource("4_dm4jr")
@@ -98,25 +89,6 @@ player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Body"]
 shape = SubResource("CircleShape2D_6q7us")
-
-[node name="Weapon" type="StaticBody2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(0, -72)
-disable_mode = 1
-script = ExtResource("3_ytd6v")
-player = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
-rotation = 1.57039
-shape = SubResource("CapsuleShape2D_2n242")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon"]
-sprite_frames = SubResource("SpriteFrames_75lbp")
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
-position = Vector2(7.62939e-06, -9)
-rotation = -3.14159
-scale = Vector2(131.167, -69.0275)
-texture = SubResource("PlaceholderTexture2D_c8w65")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4, -29)

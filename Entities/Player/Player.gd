@@ -37,7 +37,7 @@ func _ready():
 	Globals.set("player", self)
 	health = 1;
 	
-	weapon = weapons.current_weapon
+	weapon = weapons.current_weapon.instantiate()
 	
 
 
@@ -101,15 +101,16 @@ func flip(normal):
 	pass
 	
 func handle_collision():
-	var collide = weapon.move_and_collide(Vector2.ZERO)
+	if (weapon is Weapon):
+		var collide = weapon.move_and_collide(Vector2.ZERO)
 	
-	if (collide != null and collide.get_class() == "Main_Wall"):
+		if (collide != null and collide.get_class() == "Main_Wall"):
 		
-		print(collide.get_collider().get_class())
-		flip(collide.get_normal())
-		pass
+			print(collide.get_collider().get_class())
+			flip(collide.get_normal())
+			pass
 	
-	pass
+		pass
 	
 		
 
