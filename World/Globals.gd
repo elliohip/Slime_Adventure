@@ -10,6 +10,8 @@ var rand = RandomNumberGenerator.new()
 
 @onready var level = 0
 
+@onready var current_world = get_tree().current_scene
+
 
 
 var enemy_count = 0;

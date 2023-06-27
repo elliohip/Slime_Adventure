@@ -1,11 +1,12 @@
 extends Node2D
 
+class_name SkullSpawner
 
 @onready var globals = get_node("/root/Globals")
 
 @onready var spawn_count = globals.level + 1
 
-@export var world : Node2D
+@export var world : Level
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if (len(globals.enemies) == 0 and globals.enemy_count != 0):
+	if (len(globals.enemies) == 0 and globals.enemy_count != 0 and globals.enemy_count < world.max_skel):
 		spawn_skulls()
 	pass
 	

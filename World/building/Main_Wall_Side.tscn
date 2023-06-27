@@ -1,12 +1,98 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdmp3wjbw74mq"]
+[gd_scene load_steps=6 format=3 uid="uid://fifhj1cf8abj"]
 
-[ext_resource type="Script" path="res://World/building/Main_Wall.gd" id="1_1v2ps"]
+[ext_resource type="Script" path="res://Worlds/World/building/Main_Wall.gd" id="1_iflb2"]
+[ext_resource type="Texture2D" uid="uid://bp67euhb2eu2m" path="res://Assets/Mini_Dungeon_v1.0/Tilesets/Walls.png" id="2_c6ixl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s45vf"]
 size = Vector2(22, 283)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5tw0"]
+texture = ExtResource("2_c6ixl")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+7:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mnxfg"]
+sources/0 = SubResource("TileSetAtlasSource_t5tw0")
+
 [node name="Main_Wall_Side" type="StaticBody2D"]
-script = ExtResource("1_1v2ps")
+script = ExtResource("1_iflb2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s45vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_mnxfg")
+format = 2
+layer_0/tile_data = PackedInt32Array(-524289, 458752, 2, -458753, 458752, 2, -393217, 458752, 2, -327681, 458752, 2, -262145, 458752, 2, -196609, 458752, 2, -131073, 458752, 2, -65537, 458752, 2, -1, 458752, 2, 65535, 458752, 2, 131071, 458752, 2, 196607, 458752, 2)

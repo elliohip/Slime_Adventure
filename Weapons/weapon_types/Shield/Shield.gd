@@ -17,8 +17,10 @@ func _process(delta):
 	sprite.play("default")
 	var collide = move_and_collide(Vector2.ZERO)
 	
-	if (collide != null and collide.get_class() == "Main_Wall"):
-		player.flip(collide.get_normal())
+	if (collide != null):
+		var tile_position = collide.get_position()
+		print(globals.current_world.tile_map)
+		#	player.flip(collide.get_normal())
 		
 		pass
 	
